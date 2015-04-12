@@ -1,10 +1,104 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>WAR</title>
+<head>
+    <meta charset="ISO-8859-1">
+
+    <link href="css/style.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript"
+            src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBarCJmwOB_HkTGDA9hGh_3IK0zEhOOFXs&sensor=false&libraries=geometry">
+    </script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <!--
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?libraries=geometry&sensor=false"></script>
+     -->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+    <title>Guerra</title>
+
+
+    <script type="text/javascript" src="js/libs/EventBus.js"></script>
+    <script type="text/javascript" src="js/Init.js"></script>
+
+    <script type="text/javascript" src="js/view/Console.js"></script>
+    <script type="text/javascript" src="js/view/GameMap.js"></script>
+    <script type="text/javascript" src="js/view/Info.js"></script>
+    <script type="text/javascript" src="js/view/List.js"></script>
+    <script type="text/javascript" src="js/view/Graphic.js"></script>
+
+    <script type="text/javascript">
+	google.load('visualization', '1', {packages: ['corechart']});
+    google.maps.event.addDomListener(window, 'load', initialize);      
+</script>
 </head>
 <body>
-    <h1>WAR</h1>
+<div class="info">
+    <div class="box">
+        <div id="info" class="detail">
+            <div class="box">
+                <h2 id="infoTitle"></h2>
+                <div class="leftPanel">
+                    <div class="leftPanel">
+                        <h5 class="leftLabel">Fecha:</h5>
+                    </div>
+                    <div class="rightPanel">
+                        <h5 id="infoDate" class="rightLabel"></h5>
+                    </div>
+                    <div class="leftPanel">
+                        <h5 class="leftLabel">PBI:</h5>
+                    </div>
+                    <div class="rightPanel">
+                        <h5 id="infoPbi" class="rightLabel"></h5>
+                    </div>
+                    <div class="leftPanel">
+                        <h5 class="leftLabel">Resultados:    </h5>
+                    </div>
+                    <div class="rightPanel">
+                        <h5 id="infoWin" class="rightLabel"></h5>
+                    </div>
+                </div>
+                <div class="rightPanel">
+                    <div class="leftPanel">
+                        <h5 class="leftLabel">Reservas:</h5>
+                    </div>
+                    <div class="rightPanel">
+                        <h5 id="infoReserve" class="rightLabel"></h5>
+                    </div>
+                    <div class="leftPanel">
+                        <h5 class="leftLabel">Presupuesto:</h5>
+                    </div>
+                    <div class="rightPanel">
+                        <h5 id="infoEstimation" class="rightLabel"></h5>
+                    </div>
+                </div>
+            </div>
+            <div id="graphInfo" class="graphInfo">
+                <div class="box">
+                </div>
+            </div>
+        </div>
+        <div id="units" class="list">
+            <h2 id="listTitle">Unidades</h2>
+            <div id="unitListBox"></div>
+        </div>
+    </div>
+</div>
+
+<div id="mapContainer" class="mapContainer">
+    <div id="map_canvas"></div>
+    <div id="mapCircle">
+        <img alt="circle" src="images/circle.png" class="mapCircle">
+    </div>
+    <div id="mapLabel"></div>
+</div>
+
+<div class=footer>
+    <div class="graph">
+        <div id="graph1" class="graphChart"></div>
+        <div id="graph2" class="graphChart"></div>
+    </div>
+    <div class="console">
+        <input id="console" class="console" ></input>
+    </div>
+</div>
 </body>
 </html>
