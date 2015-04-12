@@ -1,0 +1,9 @@
+spring:
+  data:
+    mongodb:
+      host: localhost
+      uri: mongodb://localhost/war
+      database: war
+server:
+  port: 8081
+  context-path: /war
