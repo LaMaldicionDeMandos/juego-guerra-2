@@ -1,18 +1,19 @@
-package org.pasut.games.war.domain.repositories;
+package org.pasut.games.war.services;
 
 import org.pasut.games.war.domain.Country;
+import org.pasut.games.war.domain.repositories.CountryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by marcelo on 17/04/15.
  */
-@Component
-public class GeneralRepository {
+@Service
+public class GeneralService {
     private final CountryRepository countryRepo;
 
     @Autowired
-    public GeneralRepository(final CountryRepository countryRepo) {
+    public GeneralService(final CountryRepository countryRepo) {
         this.countryRepo = countryRepo;
     }
 

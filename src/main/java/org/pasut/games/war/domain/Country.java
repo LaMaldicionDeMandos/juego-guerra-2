@@ -2,12 +2,13 @@ package org.pasut.games.war.domain;
 
 import com.google.common.collect.Lists;
 import org.bson.types.ObjectId;
+import org.pasut.games.war.domain.unit.Placeable;
 
 import java.util.List;
 
 import static com.google.common.collect.Iterables.getLast;
 
-public class Country {
+public class Country implements Placeable {
 
     private final String id;
 
@@ -52,6 +53,10 @@ public class Country {
         getLast(historyStats, new CountryStat(reserve, fixedCost, dynamicCost)).addDynamicCost(cost);
     }
 
+    public GameDate getDate() {
+        return date;
+    }
+
     public String getId() {
         return id;
     }
@@ -67,6 +72,14 @@ public class Country {
     public double getLon() {
         return lon;
     }
+
+    @Override
+    public LatLong getPosition() {
+        return new LatLong(lat, lon);
+    }
+
+    @Override
+    public void setPosition(LatLong position) {}
 
 
     public String getName() {
