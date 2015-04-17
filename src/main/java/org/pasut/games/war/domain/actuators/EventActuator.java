@@ -1,4 +1,4 @@
-package org.pasut.games.war.domain;
+package org.pasut.games.war.domain.actuators;
 
 import org.pasut.games.war.domain.repositories.GeneralRepository;
 import org.pasut.games.war.domain.unit.Placeable;

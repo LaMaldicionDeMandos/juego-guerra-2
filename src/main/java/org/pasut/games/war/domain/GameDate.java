@@ -1,6 +1,6 @@
 package org.pasut.games.war.domain;
 
-public class GameDate {
+public class GameDate implements Comparable<GameDate>{
     private int day;
     private int hour;
     private int minute;
@@ -66,5 +66,12 @@ public class GameDate {
 
     public int getMinute(){
         return minute;
+    }
+
+    @Override
+    public int compareTo(GameDate o) {
+        if (equals(o)) return 0;
+        if (lessThan(o)) return -1;
+        return 1;
     }
 }

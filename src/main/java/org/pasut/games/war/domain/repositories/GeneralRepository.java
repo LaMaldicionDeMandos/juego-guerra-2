@@ -1,5 +1,6 @@
 package org.pasut.games.war.domain.repositories;
 
+import org.pasut.games.war.domain.Country;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +12,11 @@ public class GeneralRepository {
     private final CountryRepository countryRepo;
 
     @Autowired
-    public GeneralRepository(CountryRepository countryRepo) {
+    public GeneralRepository(final CountryRepository countryRepo) {
         this.countryRepo = countryRepo;
+    }
+
+    public Country findCountry(final String id) {
+        return countryRepo.findOne(id);
     }
 }
