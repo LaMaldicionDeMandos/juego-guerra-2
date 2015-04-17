@@ -1,10 +1,8 @@
 package org.pasut.games.war.domain;
 
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import org.bson.types.ObjectId;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.google.common.collect.Iterables.getLast;
@@ -18,9 +16,9 @@ public class Country {
     private final double lon;
     private final String name;
     private double pbi;
+    private double pbiPercent;
     private double reserve;
-    private double estamitionPercent = .01f;
-    private double estimation;
+    private double currentAmount;
     private List<CountryStat> historyStats;
     private GameDate date;
     private double fixedCost;
@@ -38,20 +36,20 @@ public class Country {
         this.name = name;
         this.lat = lat;
         this.lon = lon;
-        this.pbi = pbi*.9;
-        this.reserve = pbi*.1;
-        this.estamitionPercent = .01;
-        this.estimation = this.pbi*this.estamitionPercent;
+        this.pbi = pbi;
+        this.pbiPercent = .1;
+        this.reserve = pbi*pbiPercent;
+        this.currentAmount = reserve;
         this.historyStats = Lists.newArrayList();
         this.date = new GameDate();
         this.fixedCost = 0;
         this.dynamicCost = 0;
-        this.historyStats.add(new CountryStat(this.estimation,this.fixedCost, this.dynamicCost));
+        this.historyStats.add(new CountryStat(this.reserve,this.fixedCost, this.dynamicCost));
     }
 
     public void addDynamicCost(double cost){
         this.dynamicCost+= cost;
-        getLast(historyStats, new CountryStat(estimation, fixedCost, dynamicCost)).addDynamicCost(cost);
+        getLast(historyStats, new CountryStat(reserve, fixedCost, dynamicCost)).addDynamicCost(cost);
     }
 
     public String getId() {
@@ -81,6 +79,10 @@ public class Country {
 
     public double getReserve() {
         return reserve;
+    }
+
+    public double getCurrentAmount() {
+        return currentAmount;
     }
 
     public void setDate(GameDate date) {

@@ -1,9 +1,21 @@
 spring:
+  profiles: development
   data:
     mongodb:
       host: localhost
-      uri: mongodb://localhost/war
-      database: war
+      uri: mongodb://localhost/war-deb
+      database: war-deb
 server:
-  port: 8081
+  port: 8080
   context-path: /war
+---
+spring:
+    profiles: alpha
+    data:
+      mongodb:
+        host: localhost
+        uri: mongodb://localhost/war-alpha
+        database: war-alpha
+  server:
+    port: 8080
+    context-path: /war
