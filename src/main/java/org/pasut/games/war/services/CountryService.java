@@ -7,4 +7,5 @@ import org.pasut.games.war.domain.Country;
  */
 public interface CountryService {
     Country newCountry(Country country);
+    Country findByCode(String code);
 }

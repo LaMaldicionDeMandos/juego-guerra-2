@@ -22,10 +22,16 @@ public class CountryServiceImpl implements CountryService {
         this.repo = repo;
         this.eventRepo = eventRepo;
     }
+
     @Override
     public Country newCountry(final Country country) {
         Event asignEvent = new Event(country.getDate(), country.getId(), country.getId(), "Asignar Presupuesto", new AsignBudgetEventActuator());
         eventRepo.save(asignEvent);
         return repo.save(country);
+    }
+
+    @Override
+    public Country findByCode(final String code) {
+        return repo.findByCode(code);
     }
 }

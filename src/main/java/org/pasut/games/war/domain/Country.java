@@ -3,6 +3,7 @@ package org.pasut.games.war.domain;
 import com.google.common.collect.Lists;
 import org.bson.types.ObjectId;
 import org.pasut.games.war.domain.unit.Placeable;
+import org.springframework.data.annotation.Id;
 
 import java.util.List;
 
@@ -10,6 +11,7 @@ import static com.google.common.collect.Iterables.getLast;
 
 public class Country implements Placeable {
 
+    @Id
     private final String id;
 
     private final String code;
@@ -108,5 +110,9 @@ public class Country implements Placeable {
 
     public double getDynamicCost() {
         return dynamicCost;
+    }
+
+    public List<CountryStat> getHistoryStats() {
+        return historyStats;
     }
 }

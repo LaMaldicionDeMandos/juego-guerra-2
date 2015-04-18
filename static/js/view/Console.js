@@ -1,9 +1,13 @@
 function Console(){
 	var that = this;
+	console.log("Construyo Console");
 	eventBus.on(LoadEvent, function(){
+		console.log("On Load, agrego funcion keyup");
 		that.view = $('#console');
 		that.view.keyup(function(event){
+			console.log("Preciono tecla");
 			if(event.keyCode==13){
+				console.log("presiono enter");
 				that.execute(that.view.val());
 				that.view.val('');
 			}
@@ -33,8 +37,9 @@ function add(params){
 	}
 	$.ajax({
 		type : 'POST',
-		//@Path("new/{code}/{name}/{lat}/{lon}/{pbi}")
-		url : 'rest/country/new/' + params[0] + '/' + params[1] + '/' + params[3] + '/' + params[4] + '/' + params[2],
+		//@Path("country?code={code}&name={name}&pbi={pbi}&lat={lat}&lon={lon}")
+		url : 'country?code=' + params[0] + '&name=' + params[1] + '&pbi=' + params[2] +
+		'&lat=' + params[3] + '&lon=' + params[4],
 		dataType : 'json',
 		contentType : 'application/json',
 		success: function(country){
@@ -43,15 +48,15 @@ function add(params){
 	});
 };
 
-function load(params){
+function see(params){
 	if(params.length != 1){
 		alert("Error: Tiene que tener los parametros (code)");
 		return;
 	}
 	$.ajax({
 		type: 'GET',
-		//@Path("get/{code}")
-		url: 'rest/country/get/' + params[0],
+		//@Path("country/code/{code}")
+		url: 'country/code/' + params[0],
 		dataType: 'json',
 		contentType: 'application/json',
 		success: function(country){
