@@ -83,6 +83,9 @@ public class Country implements Placeable {
     @Override
     public void setPosition(LatLong position) {}
 
+    public double getPbiPercent() {
+        return pbiPercent;
+    }
 
     public String getName() {
         return name;

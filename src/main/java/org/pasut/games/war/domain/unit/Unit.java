@@ -1,5 +1,6 @@
 package org.pasut.games.war.domain.unit;
 
+import org.bson.types.ObjectId;
 import org.pasut.games.war.domain.GameDate;
 import org.pasut.games.war.domain.LatLong;
 import org.pasut.games.war.domain.visibility.Visibility;
@@ -20,6 +21,11 @@ public abstract class Unit implements Visibility {
     }
 
     public Unit(final String countryId, final String name, final String type){
+        this(ObjectId.get().toHexString(), countryId, name, type);
+    }
+
+    public Unit(final String id, final String countryId, final String name, final String type){
+        this.id = id;
         this.countryId = countryId;
         this.name = name;
         this.type = type;

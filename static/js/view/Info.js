@@ -24,8 +24,8 @@ Info.prototype.update = function(){
 	this.view.title.text(this.country.name);
 	this.view.pbi.text(this.country.pbi);
 	this.view.reserve.text(this.country.reserve);
-	this.view.win.text(/*this.country.win*/"0.1" + '%');
-	this.view.estimation.text(this.country.estimation);
+	this.view.win.text(this.country.pbiPercent*100 + '%');
+	this.view.estimation.text(this.country.currentAmount);
 	var minute = this.country.date.minute < 10 ? "0" + this.country.date.minute : this.country.date.minute;  
 	this.view.date.text(this.country.date.day + " " + this.country.date.hour + ":" + minute);
 };
